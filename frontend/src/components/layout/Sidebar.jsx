@@ -38,6 +38,8 @@ export default function Sidebar({
     return (
         <aside
             className="
+                relative
+                z-50
                 w-full
                 lg:w-[280px]
                 lg:min-h-screen
@@ -125,6 +127,8 @@ export default function Sidebar({
 
         <div
           className="
+        relative
+        z-50
         px-3
         lg:px-5
         grid
@@ -143,41 +147,43 @@ export default function Sidebar({
                     const isActive = activePage === item.title;
 
                     return (
-                        <button
-                            key={item.title}
-                            type="button"
-                            onClick={() => {
-                                console.log("CLICKED:", item.title);
-                                onNavigate(item.title);
-                            }}
-                            className={`
-group
-flex
-items - center
-justify - center
-lg: justify - start
-gap - 2
-lg: gap - 4
-px - 4
-lg: px - 5
-py - 3
-lg: py - 4
-rounded - xl
-lg: rounded - 2xl
-cursor - pointer
-transition - all
-duration - 300
-text - left
-whitespace - nowrap
-flex - shrink - 0
+                      <button
+                        key={item.title}
+                        type="button"
+                        onClick={() => {
+                          console.log("CLICKED:", item.title);
+                          onNavigate(item.title);
+                        }}
+                        className={`
+        relative
+        z-50
+        pointer-events-auto
+        group
+        flex
+        items-center
+        justify-center
+        lg:justify-start
+        gap-2
+        lg:gap-4
+        px-4
+        lg:px-5
+        py-3
+        lg:py-4
+        rounded-xl
+        lg:rounded-2xl
+        cursor-pointer
+        transition-all
+        duration-300
+        text-left
+        whitespace-nowrap
+        flex-shrink-0
 
-                                ${
-  isActive
-    ? "bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-[0_0_25px_rgba(34,211,238,0.35)]"
-    : "text-gray-400 hover:text-white hover:bg-cyan-500/10"
-}
-`}
-                        >
+        ${isActive
+                            ? "bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-[0_0_25px_rgba(34,211,238,0.35)]"
+                            : "text-gray-400 hover:text-white hover:bg-cyan-500/10"
+                          }
+    `}
+                      >
 
                             <span className="text-lg lg:text-xl group-hover:scale-110 transition">
                                 {item.icon}
