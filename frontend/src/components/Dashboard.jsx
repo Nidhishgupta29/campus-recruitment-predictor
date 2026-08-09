@@ -850,6 +850,7 @@ export default function Dashboard({ onLogout }) {
 
         <Topbar
           analysisId={analysisId}
+          studentName={studentName}
           onDownloadReport={handleDownloadReport}
         />
 
