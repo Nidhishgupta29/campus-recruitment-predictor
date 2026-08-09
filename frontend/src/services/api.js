@@ -1,12 +1,12 @@
 import axios from "axios";
 
-
 const API = axios.create({
     baseURL: "https://campus-recruitment-predictor.onrender.com",
 });
 
-API.interceptors.request.use((req) => {
+// ---------- AUTH TOKEN ----------
 
+API.interceptors.request.use((req) => {
     const token = localStorage.getItem("token");
 
     if (token) {
@@ -14,8 +14,26 @@ API.interceptors.request.use((req) => {
     }
 
     return req;
-
 });
+
+// ---------- Authentication ----------
+
+export const signup = (data) =>
+    API.post("/signup", data);
+
+export const login = (data) =>
+    API.post("/login", data);
+
+// ---------- Profile ----------
+
+export const saveProfile = (data) =>
+    API.post("/save-profile", data);
+
+export async function getProfile() {
+    const response = await API.get("/get-profile");
+
+    return response.data;
+}
 
 // ---------- Prediction ----------
 
@@ -34,101 +52,22 @@ export const predictCareer = (data) =>
 export const skillGapAnalysis = (data) =>
     API.post("/skill-gap-analysis", data);
 
+// ---------- AI Roadmap ----------
+
 export const generateAIRoadmap = (data) => {
     console.trace("generateAIRoadmap called");
+
     return API.post("/generate-ai-roadmap", data);
 };
 
-// ---------- Authentication ----------
-
-export const signup = (data) =>
-    API.post("/signup", data);
-
-export const login = (data) =>
-    API.post("/login", data);
-    try {
-        const response = await login({
-            email,
-            password
-        });
-    
-        console.log("LOGIN RESPONSE:", response.data);
-    
-        localStorage.setItem("token", response.data.token);
-    
-    } catch (error) {
-        console.log("LOGIN ERROR:", error.response?.data);
-    
-        alert(
-            error.response?.data?.message ||
-            error.response?.data?.error ||
-            "Login failed"
-        );
-    }
-
-// ---------- Profile ----------
-
-export const saveProfile = (data) =>
-    API.post(
-        "/save-profile",
-        data,
-        {
-            headers: {
-                Authorization: "Bearer " + localStorage.getItem("token")
-            }
-        }
-    );
-
-export async function getProfile() {
-    const token = localStorage.getItem("token");
-
-    const response = await fetch(
-        `${API.defaults.baseURL}/get-profile`,
-        {
-            method: "GET",
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        }
-    );
-
-    const data = await response.json();
-
-    if (!response.ok) {
-        throw new Error(
-            data.message || "Failed to load profile"
-        );
-    }
-
-    return data;
-}
+// ---------- Report ----------
 
 export async function downloadReport() {
-    const token = localStorage.getItem("token");
+    const response = await API.get("/download-report", {
+        responseType: "blob",
+    });
 
-    const response = await fetch(
-        `${API.defaults.baseURL}/download-report`,
-        {
-            method: "GET",
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        }
-    );
-
-    if (!response.ok) {
-        const errorData = await response.json();
-
-        throw new Error(
-            errorData.message ||
-            errorData.error ||
-            "Failed to download report"
-        );
-    }
-
-    const blob = await response.blob();
-
-    const url = window.URL.createObjectURL(blob);
+    const url = window.URL.createObjectURL(response.data);
 
     const a = document.createElement("a");
 
@@ -136,6 +75,7 @@ export async function downloadReport() {
     a.download = "Career_Analysis_Report.pdf";
 
     document.body.appendChild(a);
+
     a.click();
 
     a.remove();

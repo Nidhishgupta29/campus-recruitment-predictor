@@ -10,7 +10,10 @@ function App() {
 
   const [showSignup, setShowSignup] = useState(false);
 
-  // User is not logged in
+  console.log("APP RENDER");
+  console.log("Token:", localStorage.getItem("token"));
+  console.log("Logged In:", loggedIn);
+
   if (!loggedIn) {
     if (showSignup) {
       return (
@@ -22,16 +25,20 @@ function App() {
 
     return (
       <Login
-        onLogin={() => setLoggedIn(true)}
+        onLogin={() => {
+          console.log("APP: LOGIN SUCCESS");
+          setLoggedIn(true);
+        }}
         onSignup={() => setShowSignup(true)}
       />
     );
   }
 
-  // User is logged in
   return (
     <Dashboard
       onLogout={() => {
+        console.log("APP: LOGOUT");
+
         localStorage.removeItem("token");
         localStorage.removeItem("name");
         localStorage.removeItem("analysis_id");
