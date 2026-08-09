@@ -828,7 +828,7 @@ export default function Dashboard({ onLogout }) {
 
   return (
 
-    <div className="flex min-h-screen bg-[#080B14] relative overflow-hidden animate-fadeIn">
+    <div className="flex flex-col lg:flex-row min-h-screen bg-[#080B14] relative overflow-hidden animate-fadeIn">
 
       <div className="absolute inset-0 -z-0">
 
@@ -846,7 +846,7 @@ export default function Dashboard({ onLogout }) {
         onNavigate={setActivePage}
       />
 
-      <div className="flex-1 relative z-10 px-6 py-6">
+      <div className="flex-1 min-w-0 relative z-10 px-3 sm:px-4 lg:px-6 py-4 lg:py-6">
 
         <Topbar
           analysisId={analysisId}

@@ -123,19 +123,20 @@ export default function Sidebar({
 
             {/* MENU */}
 
-            <div
-                className="
-                    px-3
-                    lg:px-5
-                    flex
-                    lg:flex-col
-                    gap-2
-                    overflow-x-auto
-                    lg:overflow-visible
-                    pb-3
-                    lg:pb-0
-                "
-            >
+        <div
+          className="
+        px-3
+        lg:px-5
+        grid
+        grid-cols-2
+        sm:grid-cols-3
+        lg:flex
+        lg:flex-col
+        gap-2
+        pb-3
+        lg:pb-0
+    "
+        >
 
                 {menu.map((item) => {
 
