@@ -14,19 +14,28 @@ export default function Topbar({
 
     <div
       className="
-flex
-justify-between
-items-center
-px-8
-py-5
-mb-6
-bg-white/5
-backdrop-blur-xl
-border
-border-white/10
-rounded-3xl
-shadow-xl
-"
+    flex
+    flex-col
+    lg:flex-row
+    lg:justify-between
+    items-stretch
+    lg:items-center
+    gap-5
+    px-4
+    sm:px-6
+    lg:px-8
+    py-4
+    sm:py-5
+    mb-6
+    bg-white/5
+    backdrop-blur-xl
+    border
+    border-white/10
+    rounded-3xl
+    shadow-xl
+    w-full
+    min-w-0
+  "
     >
 
       {/* Left */}
@@ -45,21 +54,37 @@ shadow-xl
 
       {/* Right */}
 
-      <div className="flex items-center gap-4">
+      <div
+        className="
+    flex
+    flex-col
+    sm:flex-row
+    items-stretch
+    sm:items-center
+    gap-3
+    w-full
+    lg:w-auto
+    min-w-0
+  "
+      >
 
         {/* Analysis ID */}
 
         <div
           className="
-px-4
-py-2
-rounded-xl
-bg-[#111827]
-border
-border-white/10
-text-gray-300
-text-sm
-"
+    px-4
+    py-3
+    rounded-xl
+    bg-[#111827]
+    border
+    border-white/10
+    text-gray-300
+    text-sm
+    w-full
+    sm:w-auto
+    min-w-0
+    break-all
+  "
         >
           Analysis ID:
           <span className="text-cyan-400 font-semibold ml-1">
@@ -88,23 +113,27 @@ text-sm
             }
           }}
           className="
-        flex
-        items-center
-        gap-2
-        px-5
-        py-2
-        rounded-xl
-        bg-gradient-to-r
-        from-cyan-500
-        to-blue-600
-        text-white
-        font-medium
-        hover:scale-105
-        transition-all
-        duration-300
-        shadow-lg
-        shadow-cyan-500/30
-    "
+    flex
+    items-center
+    justify-center
+    gap-2
+    px-5
+    py-3
+    w-full
+    sm:w-auto
+    whitespace-nowrap
+    rounded-xl
+    bg-gradient-to-r
+    from-cyan-500
+    to-blue-600
+    text-white
+    font-medium
+    hover:scale-105
+    transition-all
+    duration-300
+    shadow-lg
+    shadow-cyan-500/30
+  "
         >
           <FiDownload />
           Download Report
