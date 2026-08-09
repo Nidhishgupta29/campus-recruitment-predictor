@@ -15,4 +15,3 @@ requests==2.34.2
 bcrypt==5.0.0
 PyJWT==2.13.0
 reportlab
-gunicorn==26.0.0
