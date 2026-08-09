@@ -1765,12 +1765,27 @@ def generate_ai_roadmap():
 
         data = request.json
 
-        topic = data.get("topic")
-        duration = data.get("duration")
-        goal = data.get("goal")
-        difficulty = data.get("difficulty")
-
+        topic = data.get("topic", "")
+        duration = data.get("duration", "")
+        goal = data.get("goal", "")
+        difficulty = data.get("difficulty", "")
+        
+        # Topic agar list aaye to usko string me convert karo
+        if isinstance(topic, list):
+            topic = ", ".join(str(item) for item in topic)
+        
+        topic = str(topic)
+        duration = str(duration)
+        goal = str(goal)
+        difficulty = str(difficulty)
+        
         cache_key = f"{topic.lower()}_{duration}_{goal}_{difficulty}"
+        
+        print("Topic =", topic)
+        print("Duration =", duration)
+        print("Goal =", goal)
+        print("Difficulty =", difficulty)
+        print("Cache Key =", cache_key)
 
         print("Cache Key =", cache_key)
 

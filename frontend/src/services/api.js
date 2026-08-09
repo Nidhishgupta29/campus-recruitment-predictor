@@ -2,7 +2,7 @@ import axios from "axios";
 
 
 const API = axios.create({
-    baseURL: "http://127.0.0.1:5000",
+    baseURL: "https://campus-recruitment-predictor.onrender.com",
 });
 
 API.interceptors.request.use((req) => {
@@ -46,6 +46,25 @@ export const signup = (data) =>
 
 export const login = (data) =>
     API.post("/login", data);
+    try {
+        const response = await login({
+            email,
+            password
+        });
+    
+        console.log("LOGIN RESPONSE:", response.data);
+    
+        localStorage.setItem("token", response.data.token);
+    
+    } catch (error) {
+        console.log("LOGIN ERROR:", error.response?.data);
+    
+        alert(
+            error.response?.data?.message ||
+            error.response?.data?.error ||
+            "Login failed"
+        );
+    }
 
 // ---------- Profile ----------
 
@@ -61,14 +80,12 @@ export const saveProfile = (data) =>
     );
 
 export async function getProfile() {
-
     const token = localStorage.getItem("token");
 
     const response = await fetch(
-        "http://127.0.0.1:5000/get-profile",
+        `${API.defaults.baseURL}/get-profile`,
         {
             method: "GET",
-
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -85,11 +102,12 @@ export async function getProfile() {
 
     return data;
 }
+
 export async function downloadReport() {
     const token = localStorage.getItem("token");
 
     const response = await fetch(
-        "http://127.0.0.1:5000/download-report",
+        `${API.defaults.baseURL}/download-report`,
         {
             method: "GET",
             headers: {
@@ -123,5 +141,4 @@ export async function downloadReport() {
     a.remove();
 
     window.URL.revokeObjectURL(url);
-
 }

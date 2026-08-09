@@ -10,38 +10,42 @@ export default function Login({ onLogin }) {
 
         alert("Login button clicked");
 
-        console.log("Button clicked");
+        console.log("LOGIN BUTTON CLICKED");
+        console.log("Email:", email);
+        console.log("Password:", password);
 
         try {
 
             const res = await login({
-                email,
-                password
+                email: email.trim(),
+                password: password
             });
 
-            console.log(res.data);
+            console.log("LOGIN SUCCESS:", res.data);
 
             localStorage.setItem("token", res.data.token);
             localStorage.setItem("name", res.data.name);
+            localStorage.setItem("analysis_id", res.data.analysis_id);
 
-            console.log(localStorage.getItem("token"));
+            console.log(
+                "TOKEN:",
+                localStorage.getItem("token")
+            );
 
             onLogin();
 
+        } catch (err) {
+
+            console.log("LOGIN ERROR:", err);
+            console.log("STATUS:", err.response?.status);
+            console.log("BACKEND RESPONSE:", err.response?.data);
+
+            alert(
+                err.response?.data?.message ||
+                err.response?.data?.error ||
+                "Login failed"
+            );
         }
-
-        catch (err) {
-
-            console.log(err);
-
-            console.log(err.response);
-
-            console.log(err.response?.data);
-
-            alert("Invalid Credentials");
-
-        }
-
     }
 
     return (

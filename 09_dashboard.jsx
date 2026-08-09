@@ -3,7 +3,7 @@ import { useEffect } from "react";
 
 useEffect(() => {
   axios.post(
-    "http://127.0.0.1:5000/predict-placement",
+    "https://campus-recruitment-predictor.onrender.com/predict-placement",
     {}
   )
   .then((response) => {

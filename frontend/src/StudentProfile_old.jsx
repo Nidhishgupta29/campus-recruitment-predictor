@@ -50,27 +50,27 @@ const StudentProfile = () => {
   try {
 
     const placementResponse = await axios.post(
-      "http://127.0.0.1:5000/predict-placement",
+      "https:///campus-recruitment-predictor.onrender.com/predict-placement",
       studentData
     );
 
     const salaryResponse = await axios.post(
-      "http://127.0.0.1:5000/predict-salary",
+      "https:///campus-recruitment-predictor.onrender.com/predict-salary",
       studentData
     );
 
     const readinessResponse = await axios.post(
-      "http://127.0.0.1:5000/readiness-score",
+      "https:///campus-recruitment-predictor.onrender.com/readiness-score",
       studentData
     );
 
     const careerResponse = await axios.post(
-      "http://127.0.0.1:5000/career-recommendation",
+      "https:///campus-recruitment-predictor.onrender.com/career-recommendation",
       studentData
     );
 
     const skillGapResponse = await axios.post(
-      "http://127.0.0.1:5000/skill-gap-analysis",
+      "https:///campus-recruitment-predictor.onrender.com/skill-gap-analysis",
         studentData
     );
 

@@ -11,7 +11,7 @@ export default function Login({ onLogin,onSignup }) {
         try {
 
             const res = await axios.post(
-                "http://127.0.0.1:5000/login",
+                "https:///campus-recruitment-predictor.onrender.com/login",
                 {
                     email,
                     password

@@ -122,7 +122,7 @@ export default function RoadmapCard({ data }) {
                 }
 
                 const response = await fetch(
-                    "http://127.0.0.1:5000/get-roadmap-progress",
+                    "https:///campus-recruitment-predictor.onrender.com/get-roadmap-progress",
                     {
                         method: "GET",
                         headers: {
@@ -270,7 +270,7 @@ p-6
                                                     console.log("PROGRESS TO SAVE:", updatedProgress);
 
                                                     const response = await fetch(
-                                                        "http://127.0.0.1:5000/save-roadmap-progress",
+                                                        "https:///campus-recruitment-predictor.onrender.com/save-roadmap-progress",
                                                         {
                                                             method: "POST",
                                                             headers: {
