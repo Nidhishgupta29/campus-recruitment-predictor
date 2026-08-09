@@ -7,6 +7,7 @@ import { downloadReport } from "../../services/api";
 
 export default function Topbar({
   analysisId,
+  studentName,
   onDownloadReport
 }) {
 
