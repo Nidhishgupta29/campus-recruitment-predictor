@@ -13,3 +13,4 @@ tavily-python==0.7.27
 gunicorn==26.0.0
 requests==2.34.2
 bcrypt==5.0.0
+PyJWT==2.13.0
