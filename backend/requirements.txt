@@ -11,4 +11,4 @@ xgboost==3.3.0
 groq==1.6.0
 tavily-python==0.7.27
 gunicorn==26.0.0
-requests==2.34.2
+requests==2.34.2bcrypt==5.0.0
