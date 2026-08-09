@@ -151,14 +151,14 @@ export default function Dashboard({ onLogout }) {
   const DashboardPage = () => {
 
     return (
-      <div className="flex gap-6 items-start">
+      <div className="flex flex-col lg:flex-row gap-6 items-stretch lg:items-start">
 
         {/* Student Profile */}
 
         <div
           className="
           relative
-          w-[360px]
+          w-full lg:w-[360px]
           flex-shrink-0
           overflow-hidden
           bg-white/5
