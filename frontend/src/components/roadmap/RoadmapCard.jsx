@@ -1,5 +1,4 @@
-import { useState } from "react";
-
+import { useState, useEffect } from "react";
 
 import {
     FiCheckCircle,
@@ -109,7 +108,7 @@ export default function RoadmapCard({ data }) {
                 }
 
                 const response = await fetch(
-                    "https:///campus-recruitment-predictor.onrender.com/get-roadmap-progress",
+                    "https://campus-recruitment-predictor.onrender.com/get-roadmap-progress",
                     {
                         method: "GET",
                         headers: {
@@ -257,7 +256,7 @@ p-6
                                                     console.log("PROGRESS TO SAVE:", updatedProgress);
 
                                                     const response = await fetch(
-                                                        "https:///campus-recruitment-predictor.onrender.com/save-roadmap-progress",
+                                                        "https://campus-recruitment-predictor.onrender.com/save-roadmap-progress",
                                                         {
                                                             method: "POST",
                                                             headers: {
