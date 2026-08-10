@@ -1,5 +1,4 @@
-import { useState,useEffect } from "react";
-
+import { useState } from "react";
 
 
 import {
@@ -15,18 +14,6 @@ import {
 } from "react-icons/fi";
 
 function ResourceCard({ icon, title, color, items }) {
-
-    const [completedWeeks, setCompletedWeeks] = useState({});
-
-    useEffect(() => {
-
-        if (data?.completed_weeks) {
-
-            setCompletedWeeks(data.completed_weeks);
-
-        }
-
-    }, [data]);
 
     return (
 
